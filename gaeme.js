@@ -48,23 +48,28 @@ let list = [
     id: 11,
   },
 ];
+let playrs = [
+  { name: "avi", score_now: 0, score: 0 },
+  { name: "bati", score_now: 0, score: 0 },
+];
+let isWin = false;
 let dobelList = [];
 let arr = [];
-let flag1 = 0;
 let num = 4,
-  sum = 0;
+  sum = 0,
+  c = 0,
+  w = 0,
+  ind = 0;
 let board = document.getElementById("card");
 let head = document.getElementById("head");
 let but = document.querySelector("#but");
 
 let nu = document.querySelector("#numb");
-// nu.onchange = () => {};
+
 but.onclick = (event) => {
-  if (flag1) {
-    dele.remove();
-    let card = document.getElementsByClassName("dele");
-  }
-  flag1++;
+  playrs.forEach((v) => {
+    v.score_now = 0;
+  });
   event.preventDefault();
   num = Number(nu.value);
 
@@ -82,40 +87,70 @@ but.onclick = (event) => {
     const cardEl = document.createElement("img");
     cardEl.src = "g1.jpg";
     cardEl.className = "dele";
+    cardEl.id = "car";
     cardEl.height = "220";
     cardEl.width = "220";
     cardEl.onclick = function () {
       if (arr.length <= 1) {
         cardEl.src = v.img;
-        cardEl.id = v.id;
+        // cardEl.id = v.id;
         arr.push(v.id);
         if (flag2 == i) {
+          // debugger;
           flag = 1;
           arr.pop();
+          isWin = false;
         }
         if (flag) {
           ferst = cardEl;
           flag = 0;
           flag2 = i;
+          if (c == playrs.length - 1) {
+            c = 0;
+          } else c++;
         } else if (arr[0] != arr[1]) {
           setTimeout(() => {
             ferst.src = "g1.jpg";
             cardEl.src = "g1.jpg";
             flag = 1;
+            isWin;
             arr = [];
           }, 450);
         } else {
           sum++;
           ferst.onclick = () => {};
           cardEl.onclick = () => {};
+          isWin = true;
+          playrs[c].score_now = playrs[c].score_now + 1;
+          c--;
           console.log("win");
           setTimeout(() => {
             flag = 1;
           }, 250);
           arr = [];
         }
-        if (sum == num / 2) {
-        }
+      }
+      if (sum == num / 2) {
+        let scor = document.getElementById("11");
+        let max = 0;
+
+        playrs.forEach((v, i) => {
+          if (max < v.score_now) nax = v.score_now;
+          ind = i;
+        });
+        playrs[ind].score += 1;
+
+        playrs.forEach((v, i) => {
+          const sco = document.createElement("div");
+          sco.innerHTML =
+            v.name + "score now: " + v.score_now + " Overall score: " + v.score;
+          scor.appendChild(sco);
+        });
+
+        setTimeout(() => {
+          aa();
+        }, 250);
+        // dele.remove();
       }
     };
     return cardEl;
@@ -126,3 +161,9 @@ but.onclick = (event) => {
     board.appendChild(elment);
   });
 };
+function aa() {
+  dobelList.forEach(() => {
+    document.getElementById("car").remove();
+  });
+  sum = 0;
+}
