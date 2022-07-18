@@ -98,6 +98,7 @@ but.onclick = (event) => {
       cardEl.id = "car";
       cardEl.height = "120";
       cardEl.width = "120";
+
       cardEl.onclick = function () {
         if (arr.length <= 1) {
           cardEl.src = v.img;
@@ -211,6 +212,7 @@ numPlayers.onchange = (e) => {
   for (let i = 0; i < sumPlayers; i++) {
     playrs[i] = { name, score_now: 0, score: 0 };
     let inputName = document.createElement("input");
+    inputName.className="input-name";
     inputName.placeholder = "player " + (i + 1);
     inputName.onchange = (e) => {
       playrs[i] = { name: e.target.value, score_now: 0, score: 0 };

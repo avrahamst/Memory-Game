@@ -1,19 +1,29 @@
 body{
-    background-image: url(https://images.squarespace-cdn.com/content/v1/5a7c0544d74cffa3a6ce66b3/1630184464268-J71XU6EUP9Z4VZFR5BCK/Grossglockner+valley%2C+Austria.jpg?format=2500w) ;
+    background-image: url(https://images.pexels.com/photos/145685/pexels-photo-145685.jpeg?auto=compress&cs=tinysrgb&w=600) ;
+   
     background-size: 100%;
 }
 #head{
     text-align: center;
 }
 #card{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+
+
+
+
+
     /* color: blueviolet; */
    
-    margin: auto;
-    display: table;
+    /* margin: auto;
+    display: table; */
     /* flex-wrap: wrap; */
     /* grid-template-columns:  auto ; */
-    gap: 15px;
-    padding: 0px 80px;
+    /* gap: 15px;
+    padding: 0px 80px; */
     
 }
 .dele{
@@ -39,7 +49,21 @@ h1{
     
 }
 #results{
+    background-color: bisque;
+    border-radius: 10%;
     text-align: left;
+    font-size: x-large;
+    
+    width:20%;
+    height: 80%;
+
+}
+#but,#numPlayers,#but1,.input-name,#numb{
+    border-radius: 20px;
+}
+#main{
+    display: flex;
+    justify-content: center;
 }
 
 
